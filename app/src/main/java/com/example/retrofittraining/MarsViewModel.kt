@@ -18,6 +18,8 @@ class MarsViewModel(val marsDao: MarsDao) : ViewModel() {
     private val _error = MutableLiveData<String>()
     private var _marsObject = MutableLiveData<MarsData>()
     var marsObject: LiveData<MarsData> = _marsObject
+    private var _marsObjects = MutableLiveData<List<MarsData>>()
+    var marsObjects: LiveData<List<MarsData>> = _marsObjects
 
     init {
         getMarsProperties()
@@ -44,8 +46,20 @@ class MarsViewModel(val marsDao: MarsDao) : ViewModel() {
     suspend fun getMars(marsId: Long): MarsData? {
         return withContext(Dispatchers.IO){
             val marsItem = marsDao.get(marsId)
-            //marsItem is always null for some reason, probably coz json is giving ID as String and my Room Dao get method have Long as Parameter , proly just cannot find it
             marsItem
         }
     }
+
+    fun createMarsObjects(){
+        viewModelScope.launch {
+            insertMarsObjects()
+        }
+    }
+
+    suspend fun insertMarsObjects() {
+        return withContext(Dispatchers.IO){
+            marsDao.insertAll(_response.value)
+        }
+    }
+
 }

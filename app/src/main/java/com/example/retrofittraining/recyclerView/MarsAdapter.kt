@@ -8,12 +8,6 @@ import com.example.retrofittraining.data.MarsData
 
 class MarsAdapter(val clickListener: ClickListener) : ListAdapter<MarsData,MarsViewHolder>(MarsDiffCallBack()) {
 
-    var data = listOf<MarsData>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarsViewHolder {
         return MarsViewHolder.from(parent)
     }

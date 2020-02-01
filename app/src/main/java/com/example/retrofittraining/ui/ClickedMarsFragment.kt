@@ -32,7 +32,9 @@ class ClickedMarsFragment : Fragment() {
         val marsViewModel by viewModel<MarsViewModel>()
         val args = ClickedMarsFragmentArgs.fromBundle(arguments!!)
         val marsId = args.marsId
-        val marsObject = marsViewModel.getMarsById(marsId)
+        marsViewModel.createMarsObjects()
+        marsViewModel.getMarsById(marsId)
+
         binding.marsPrice.text = marsViewModel.marsObject.value?.price.toString()
         binding.marsType.text = marsViewModel.marsObject.value?.type
         Picasso.with(this.context)
