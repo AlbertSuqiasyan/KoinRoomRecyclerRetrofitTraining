@@ -17,6 +17,6 @@
         android:label="ClickedMarsFragment" >
         <argument
             android:name="marsId"
-            app:argType="long" />
+            app:argType="string" />
     </fragment>
 </navigation>
