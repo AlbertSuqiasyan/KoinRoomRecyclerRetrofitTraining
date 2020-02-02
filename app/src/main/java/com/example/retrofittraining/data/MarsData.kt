@@ -9,7 +9,7 @@ data class MarsData(
     @Json(name = "id")
     val id: String,
     @Json(name = "img_src")
-    val imgSrc: String,
+    val img_src: String,
     @Json(name = "price")
     val price: Int,
     @Json(name = "type")

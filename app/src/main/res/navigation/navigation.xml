@@ -9,7 +9,8 @@
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_clickedMarsFragment"
-            app:destination="@id/clickedMarsFragment" />
+            app:destination="@id/clickedMarsFragment"
+            app:popUpTo="@+id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/clickedMarsFragment"

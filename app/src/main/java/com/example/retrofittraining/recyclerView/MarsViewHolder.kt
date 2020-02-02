@@ -18,7 +18,7 @@ class MarsViewHolder private constructor(private val binding: ListItemMarsBindin
         binding.clickListener = clickListener
         binding.mars = item
         Picasso.with(itemView.context)
-            .load(item.imgSrc)
+            .load(item.img_src)
             .into(binding.marsImage)
     }
 

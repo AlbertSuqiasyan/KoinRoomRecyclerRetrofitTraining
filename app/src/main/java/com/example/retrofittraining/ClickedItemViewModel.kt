@@ -1,22 +1,19 @@
 package com.example.retrofittraining
 
-import androidx.lifecycle.*
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.retrofittraining.data.MarsData
 import com.example.retrofittraining.network.MarsApi
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Response
-import javax.security.auth.callback.Callback
 
-class MarsViewModel : ViewModel() {
+class ClickedItemViewModel : ViewModel() {
 
     private val _response = MutableLiveData<List<MarsData>>()
     val response: LiveData<List<MarsData>> = _response
     private val _error = MutableLiveData<String>()
-    val testList = _response.value
 
     init {
         getMarsProperties()
@@ -34,5 +31,8 @@ class MarsViewModel : ViewModel() {
         }
     }
 
+    fun getMarsData(marsDataList: List<MarsData>?, marsId: String): MarsData? {
+        return marsDataList?.find { it.id == marsId }
+    }
 
 }
